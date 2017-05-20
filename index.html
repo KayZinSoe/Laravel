@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form method="post">
+Search batchcode: <input type="text" id="query" name="search" /><br />
+<table>
+<tr>
+<td>
+ID: <br />
+<input id="result" type="text" name="id1" /> <br />
+<input id="result" type="text" name="id2" /> <br />
+</td>
+<td>
+Name: <br />
+<input id="result" type="text" name="name1" /> <br />
+<input id="result" type="text" name="name2" /> <br />
+</td>
+<td>
+Score 1: <br />
+<input id="result" type="text" name="optA1" /> <br />
+<input id="result" type="text" name="optA2" /> <br />
+</td>
+<td>
+Score 2: <br />
+<input id="result" type="text" name="optB1" /> <br />
+<input id="result" type="text" name="optB2" /> <br />
+</td>
+<td>
+Other Qualification: <br />
+<input id="result" type="text" name="other_qual1" /> <br />
+<input id="result" type="text" name="other_qual2" /> <br />
+</td>
+<td>
+Interview: <br />
+<input id="result" type="text" name="interview1" /> <br />
+<input id="result" type="text" name="interview2" /> <br />
+</td>
+<td>
+Total: <br />
+<input id="result" type="text" name="total1" /> <br />
+<input id="result" type="text" name="total2" /> <br />
+</td>
+</tr>
+</table>
+</form>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+$('input[name^=search]').click(function(e){
+	e.preventDefault(); 
+	$.ajax({
+		url:"search.php",
+		type:"POST",
+		data : { term : $('#query').val() },
+		dataType:json,
+		success : function(result) {
+			alert(result);
+		}
+	});
+})
+
+});      
+</script>
+</body>
+</html>
